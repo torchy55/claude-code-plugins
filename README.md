@@ -19,7 +19,7 @@ Claude Code plugins from BuildAtScale - slash commands, hooks, and skills for en
 
 **Image generation skill:**
 ```bash
-/plugin install nano-banana-pro@buildatscale-claude-code
+/plugin install nano-banana@buildatscale-claude-code
 ```
 
 **Promo video creation skill:**
@@ -103,20 +103,21 @@ The statusline script provides an enhanced status display with:
 }
 ```
 
-### nano-banana-pro (Skill)
+### nano-banana (Skill)
 
 ```bash
 /plugin marketplace add https://github.com/buildatscale-tv/claude-code-plugins
-/plugin install nano-banana-pro@buildatscale-claude-code
+/plugin install nano-banana@buildatscale-claude-code
 ```
 
-Generate images using Google's Gemini models (Nano Banana Pro). See the [demo video](https://youtu.be/MNqUedk79IY).
+Generate images using Google's Gemini models (Nano Banana). See the [demo video](https://youtu.be/MNqUedk79IY).
 
 **Available Models:**
-| Model | Best For | Max Resolution |
-|-------|----------|----------------|
-| **Flash** (default) | Speed, high-volume tasks | 1024px |
-| **Pro** | Professional quality, complex scenes | Up to 4K |
+| Model | Flag | Best For | Max Resolution |
+|-------|------|----------|----------------|
+| **Flash** (Nano Banana) | `flash` | Speed, high-volume tasks | 1024px |
+| **Pro** (Nano Banana Pro) | `pro` | Professional quality, complex scenes | Up to 4K |
+| **2** (Nano Banana 2) | `2` | Fast + high-res, best all-around | Up to 4K |
 
 **Prerequisites:**
 - [uv](https://docs.astral.sh/uv/) - Python package manager (required to run the image generation script). See the [uv installation walkthrough](https://youtu.be/DRdd4V1G4-k?t=80)
@@ -132,10 +133,10 @@ uv run "${SKILL_DIR}/scripts/image.py" \
 **Options:**
 - `--prompt` (required): Image description
 - `--output` (required): Output file path (PNG)
-- `--aspect`: Aspect ratio - `square` (default), `landscape`, `portrait`
-- `--reference`: Path to a reference image for style guidance
-- `--model`: `flash` (default, fast) or `pro` (high-quality)
-- `--size`: Resolution for pro model - `1K` (default), `2K`, `4K`
+- `--aspect`: Named shortcut (`square`, `landscape`, `portrait`) or direct ratio (e.g. `4:3`, `16:9`, `21:9`)
+- `--reference`: Path to a reference image for style guidance (repeatable)
+- `--model`: `flash` (default, fast), `pro` (high-quality), or `2` (Nano Banana 2, fast + high-res)
+- `--size`: Resolution for pro/2 models - `512` (2 only), `1K` (default), `2K`, `4K`
 
 ### promo-video (Skill)
 
@@ -185,7 +186,7 @@ Create professional promotional videos using Remotion with AI voiceover and back
     │   │   └── git-block-force-push.sh
     │   └── scripts/
     │       └── statusline.sh
-    ├── nano-banana-pro/
+    ├── nano-banana/
     │   └── skills/
     │       └── generate/
     │           ├── SKILL.md    # Skill documentation
